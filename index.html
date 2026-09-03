@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>誓约业务区</title>
+
+  <style>
+
+    /* ==============================
+       RESET
+    ============================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100vh;
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background: #f7f8fc;
+      color: #17181c;
+
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+
+    /* ==============================
+       NAVBAR
+    ============================== */
+
+    .navbar {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+      height: 72px;
+
+      display: flex;
+      align-items: center;
+
+      padding: 0 clamp(20px, 6vw, 100px);
+
+      background: rgba(255, 255, 255, 0.88);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+      z-index: 9999;
+    }
+
+
+    /* LOGO */
+
+    .logo {
+      margin-right: auto;
+
+      font-size: 24px;
+      font-weight: 800;
+
+      letter-spacing: -1px;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .logo:hover {
+      color: #635bff;
+    }
+
+
+    /* DESKTOP NAV */
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+
+      gap: 5px;
+
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: block;
+
+      padding: 10px 16px;
+
+      border-radius: 12px;
+
+      color: #555;
+
+      font-size: 15px;
+      font-weight: 500;
+
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: #635bff;
+      background: #efeeff;
+    }
+
+
+    /* MOBILE MENU BUTTON */
+
+    .menu-button {
+      display: none;
+
+      width: 42px;
+      height: 42px;
+
+      border: none;
+      border-radius: 12px;
+
+      background: #f1f1f5;
+
+      cursor: pointer;
+
+      font-size: 22px;
+    }
+
+
+    /* ==============================
+       MOBILE MENU
+    ============================== */
+
+    .mobile-menu {
+      display: none;
+
+      position: fixed;
+
+      top: 72px;
+      left: 0;
+
+      width: 100%;
+
+      padding: 15px 20px 20px;
+
+      background: rgba(255, 255, 255, 0.97);
+
+      backdrop-filter: blur(18px);
+
+      border-bottom: 1px solid #eee;
+
+      z-index: 9998;
+    }
+
+    .mobile-menu.active {
+      display: block;
+    }
+
+    .mobile-menu a {
+      display: block;
+
+      padding: 15px;
+
+      margin-bottom: 5px;
+
+      border-radius: 12px;
+
+      color: #333;
+
+      font-weight: 500;
+    }
+
+    .mobile-menu a:hover {
+      background: #f1f0ff;
+      color: #635bff;
+    }
+
+
+    /* ==============================
+       HERO
+    ============================== */
+
+    .hero {
+      width: 100%;
+      min-height: 100svh;
+
+      padding:
+        clamp(140px, 18vh, 200px)
+        clamp(20px, 7vw, 100px)
+        100px;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+
+      text-align: center;
+
+      background:
+
+        radial-gradient(
+          circle at 15% 25%,
+          rgba(99, 91, 255, 0.16),
+          transparent 30%
+        ),
+
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(0, 200, 255, 0.13),
+          transparent 30%
+        ),
+
+        #f7f8fc;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 900px;
+    }
+
+
+    /* TAG */
+
+    .hero-tag {
+      display: inline-block;
+
+      padding: 7px 15px;
+
+      margin-bottom: 25px;
+
+      border-radius: 50px;
+
+      background: #ebeaff;
+
+      color: #635bff;
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+
+    /* HERO TITLE */
+
+    .hero h1 {
+      font-size:
+        clamp(48px, 7vw, 90px);
+
+      line-height: 1.02;
+
+      letter-spacing:
+        clamp(-4px, -0.3vw, -1px);
+
+      margin-bottom: 28px;
+    }
+
+    .hero h1 span {
+      color: #635bff;
+    }
+
+
+    /* HERO TEXT */
+
+    .hero p {
+      width: 100%;
+      max-width: 650px;
+
+      margin: 0 auto 35px;
+
+      color: #6d6d75;
+
+      font-size:
+        clamp(16px, 2vw, 19px);
+    }
+
+
+    /* BUTTON */
+
+    .primary-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 50px;
+
+      padding: 0 25px;
+
+      border-radius: 14px;
+
+      background: #17181c;
+
+      color: white;
+
+      font-size: 15px;
+      font-weight: 600;
+
+      transition: 0.25s;
+    }
+
+    .primary-button:hover {
+      background: #635bff;
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 15px 35px
+        rgba(99, 91, 255, 0.25);
+    }
+
+
+    /* ==============================
+       FEATURES
+    ============================== */
+
+    .features {
+      width: 100%;
+
+      padding:
+        clamp(80px, 10vw, 130px)
+        clamp(20px, 7vw, 100px);
+
+      background: white;
+    }
+
+
+    .section-title {
+      width: 100%;
+      max-width: 700px;
+
+      margin: 0 auto 55px;
+
+      text-align: center;
+    }
+
+    .section-title h2 {
+      font-size:
+        clamp(36px, 5vw, 52px);
+
+      line-height: 1.1;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+
+    /* FEATURE GRID */
+
+    .feature-grid {
+      width: 100%;
+      max-width: 1250px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+      gap: 20px;
+    }
+
+
+    /* CARD */
+
+    .feature-card {
+      min-width: 0;
+
+      min-height: 270px;
+
+      padding: clamp(22px, 3vw, 32px);
+
+      display: flex;
+      flex-direction: column;
+
+      border-radius: 24px;
+
+      background: #f7f7fa;
+
+      border: 1px solid #ededf2;
+
+      transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        background 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+
+      background: white;
+
+      box-shadow:
+        0 20px 50px
+        rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* ICON */
+
+    .feature-icon {
+      width: 55px;
+      height: 55px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 25px;
+
+      border-radius: 16px;
+
+      background: #ebeaff;
+
+      font-size: 25px;
+    }
+
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+
+      font-size: 21px;
+    }
+
+    .feature-card p {
+      color: #777;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    .card-link {
+      margin-top: auto;
+      padding-top: 20px;
+
+      color: #635bff;
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+
+    /* ==============================
+       SHOWCASE
+    ============================== */
+
+    .showcase {
+      width: 100%;
+
+      padding:
+        clamp(80px, 10vw, 130px)
+        clamp(20px, 7vw, 100px);
+
+      background: #111216;
+
+      color: white;
+    }
+
+    .showcase-container {
+      width: 100%;
+      max-width: 1200px;
+
+      margin: auto;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+      gap: clamp(40px, 8vw, 100px);
+
+      align-items: center;
+    }
+
+
+    .showcase h2 {
+      font-size:
+        clamp(40px, 6vw, 65px);
+
+      line-height: 1.05;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 25px;
+    }
+
+    .showcase h2 span {
+      color: #8c85ff;
+    }
+
+    .showcase p {
+      max-width: 520px;
+
+      margin-bottom: 30px;
+
+      color: #aaa;
+    }
+
+
+    .showcase-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      min-height: 48px;
+
+      padding: 0 22px;
+
+      border-radius: 12px;
+
+      background: white;
+
+      color: #111;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      transition: 0.25s;
+    }
+
+    .showcase-button:hover {
+      background: #8c85ff;
+      color: white;
+    }
+
+
+    /* VISUAL */
+
+    .visual {
+      width: 100%;
+      aspect-ratio: 1 / 0.85;
+
+      border-radius: 30px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          #635bff,
+          #00c6ff
+        );
+
+      box-shadow:
+        0 30px 80px
+        rgba(99, 91, 255, 0.25);
+    }
+
+    .visual-inner {
+      width: 70%;
+      height: 70%;
+
+      border-radius: 24px;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background:
+        rgba(255,255,255,0.14);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.3);
+
+      backdrop-filter: blur(10px);
+
+      font-size:
+        clamp(45px, 7vw, 70px);
+    }
+
+
+    /* ==============================
+       CTA
+    ============================== */
+
+    .cta {
+      width: 100%;
+
+      padding:
+        clamp(80px, 10vw, 130px)
+        20px;
+
+      text-align: center;
+
+      background: #f7f8fc;
+    }
+
+    .cta h2 {
+      font-size:
+        clamp(36px, 5vw, 55px);
+
+      letter-spacing: -2px;
+
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin-bottom: 30px;
+
+      color: #777;
+    }
+
+
+    /* ==============================
+       FOOTER
+    ============================== */
+
+    footer {
+      width: 100%;
+
+      padding:
+        30px
+        clamp(20px, 7vw, 100px);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      background: white;
+
+      border-top: 1px solid #eee;
+
+      color: #888;
+
+      font-size: 14px;
+    }
+
+    .footer-logo {
+      color: #222;
+
+      font-weight: 800;
+    }
+
+
+    /* ==============================
+       TABLET
+       <= 1000px
+    ============================== */
+
+    @media (max-width: 1000px) {
+
+      .feature-grid {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+      }
+
+      .showcase-container {
+        gap: 50px;
+      }
+
+    }
+
+
+    /* ==============================
+       MOBILE
+       <= 700px
+    ============================== */
+
+    @media (max-width: 700px) {
+
+      /* NAV */
+
+      .navbar {
+        height: 65px;
+
+        padding: 0 18px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+
+      /* HERO */
+
+      .hero {
+        min-height: 100svh;
+
+        padding:
+          130px
+          20px
+          80px;
+      }
+
+      .hero-tag {
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size:
+          clamp(44px, 13vw, 65px);
+
+        letter-spacing: -3px;
+      }
+
+
+      /* FEATURES */
+
+      .features {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+      }
+
+      .feature-card {
+        min-height: 230px;
+      }
+
+
+      /* SHOWCASE */
+
+      .showcase {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      .showcase-container {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase h2 {
+        letter-spacing: -2px;
+      }
+
+      .visual {
+        aspect-ratio: 1 / 0.8;
+      }
+
+
+      /* FOOTER */
+
+      footer {
+        flex-direction: column;
+
+        gap: 10px;
+
+        text-align: center;
+      }
+
+    }
+
+
+    /* ==============================
+       SMALL PHONE
+       <= 400px
+    ============================== */
+
+    @media (max-width: 400px) {
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .logo {
+        font-size: 21px;
+      }
+
+      .feature-card {
+        padding: 22px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body id="home">
+
+
+  <!-- =================================
+       NAVBAR
+  ================================== -->
+
+  <header class="navbar">
+
+    <!-- 点击 Logo 返回主页 -->
+    <a
+      href="#home"
+      class="logo"
+    >
+      LOGO
+    </a>
+
+
+    <!-- Desktop Navigation -->
+
+    <nav>
+      <ul class="nav-links">
+
+        <li>
+          <a href="#people">
+            人员
+          </a>
+        </li>
+
+        <li>
+          <a href="#exchange">
+            换汇
+          </a>
+        </li>
+
+        <li>
+          <a href="#games">
+            游戏
+          </a>
+        </li>
+
+        <li>
+          <a href="#social">
+            社交软件
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+
+    <!-- Mobile Menu Button -->
+
+    <button
+      class="menu-button"
+      id="menuButton"
+      aria-label="打开菜单"
+    >
+      ☰
+    </button>
+
+  </header>
+
+
+  <!-- =================================
+       MOBILE MENU
+  ================================== -->
+
+  <div
+    class="mobile-menu"
+    id="mobileMenu"
+  >
+
+    <a href="#people">
+      👤 人员
+    </a>
+
+    <a href="#exchange">
+      💱 换汇
+    </a>
+
+    <a href="#games">
+      🎮 游戏
+    </a>
+
+    <a href="#social">
+      💬 社交软件
+    </a>
+
+  </div>
+
+
+  <!-- =================================
+       MAIN
+  ================================== -->
+
+  <main>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="hero-tag">
+          欢迎来到誓约业务平台
+        </div>
+
+        <h1>
+          誓约业务，
+          <br>
+          <span>满足您的所有幻想。</span>
+        </h1>
+
+        <p>
+          换汇、游戏与社交软件，
+          一个快速满足您所有要求的平台。
+        </p>
+
+        <a
+          href="#features"
+          class="primary-button"
+        >
+          开始探索 →
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section
+      class="features"
+      id="features"
+    >
+
+      <div class="section-title">
+
+        <h2>
+          业务介绍
+        </h2>
+
+        <p>
+          选择您想了解的业务
+        </p>
+
+      </div>
+
+
+      <div class="feature-grid">
+
+
+        <!-- PEOPLE -->
+
+        <a
+          href="#people"
+          class="feature-card"
+          id="people"
+        >
+
+          <div class="feature-icon">
+            👤
+          </div>
+
+          <h3>
+            人员
+          </h3>
+
+          <p>
+            查看誓约业务平台工作人员与负责范围。
+          </p>
+
+          <span class="card-link">
+            查看人员 →
+          </span>
+
+        </a>
+
+
+        <!-- EXCHANGE -->
+
+        <a
+          href="#exchange"
+          class="feature-card"
+          id="exchange"
+        >
+
+          <div class="feature-icon">
+            💱
+          </div>
+
+          <h3>
+            换汇
+          </h3>
+
+          <p>
+            查看不同货币之间的汇率，
+            方便进行货币转换。
+          </p>
+
+          <span class="card-link">
+            查看换汇 →
+          </span>
+
+        </a>
+
+
+        <!-- GAMES -->
+
+        <a
+          href="#games"
+          class="feature-card"
+          id="games"
+        >
+
+          <div class="feature-icon">
+            🎮
+          </div>
+
+          <h3>
+            游戏
+          </h3>
+
+          <p>
+            查看第五人格代充，代送，账号估价，洗号，代挂，代蹲等业务。
+          </p>
+
+          <span class="card-link">
+            查看业务 →
+          </span>
+
+        </a>
+
+
+        <!-- SOCIAL -->
+
+        <a
+          href="#social"
+          class="feature-card"
+          id="social"
+        >
+
+          <div class="feature-icon">
+            💬
+          </div>
+
+          <h3>
+            社交软件
+          </h3>
+
+          <p>
+            查看Discord与QQ的装扮与助力。
+          </p>
+
+          <span class="card-link">
+            查看业务 →
+          </span>
+
+        </a>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         SHOWCASE
+    ================================== -->
+
+    <section class="showcase">
+
+      <div class="showcase-container">
+
+
+        <div>
+
+          <h2>
+            Discord
+            <br>
+            <span>服务器.</span>
+          </h2>
+
+          <p>
+            我们主要在Discord里发展，欢迎加入我们的服务器。
+          </p>
+
+          <a
+            href="#features"
+            class="showcase-button"
+          >
+            加入
+          </a>
+
+        </div>
+
+
+        <div class="visual">
+
+          <div class="visual-inner">
+            ✦
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+    <!-- =================================
+         CTA
+    ================================== -->
+
+    <section class="cta">
+
+      <h2>
+        誓约业务平台
+      </h2>
+
+      <p>
+        简单介绍
+      </p>
+
+      <a
+        href="#home"
+        class="primary-button"
+      >
+        回到主页 ↑
+      </a>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =================================
+       FOOTER
+  ================================== -->
+
+  <footer>
+
+    <div class="footer-logo">
+      LOGO
+    </div>
+
+    <div>
+      © 2026 誓约业务平台
+    </div>
+
+  </footer>
+
+
+  <!-- =================================
+       JAVASCRIPT
+       Mobile Menu
+  ================================== -->
+
+  <script>
+
+    const menuButton =
+      document.getElementById("menuButton");
+
+    const mobileMenu =
+      document.getElementById("mobileMenu");
+
+
+    menuButton.addEventListener(
+      "click",
+      function () {
+
+        mobileMenu.classList.toggle("active");
+
+      }
+    );
+
+
+    /* 点击菜单项目后自动关闭 */
+
+    const mobileLinks =
+      mobileMenu.querySelectorAll("a");
+
+    mobileLinks.forEach(function(link) {
+
+      link.addEventListener(
+        "click",
+        function() {
+
+          mobileMenu.classList.remove("active");
+
+        }
+      );
+
+    });
+
+  </script>
+
+
+</body>
+</html>
