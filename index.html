@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>誓约业务区</title>
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title data-i18n="pageTitle">
+    STYX TC
+  </title>
+
 
   <style>
 
@@ -67,7 +76,7 @@
       display: flex;
       align-items: center;
 
-      padding: 0 clamp(20px, 6vw, 100px);
+      padding: 0 clamp(18px, 6vw, 100px);
 
       background: rgba(255, 255, 255, 0.88);
 
@@ -80,33 +89,58 @@
     }
 
 
-    /* LOGO */
+    /* ==============================
+       LOGO
+    ============================== */
 
     .logo {
+      width: 62px;
+      height: 62px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       margin-right: auto;
-
-      font-size: 24px;
-      font-weight: 800;
-
-      letter-spacing: -1px;
 
       cursor: pointer;
 
-      transition: 0.25s;
+      transition:
+        transform 0.25s,
+        opacity 0.25s;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
+
+      display: block;
     }
 
     .logo:hover {
-      color: #635bff;
+      transform: scale(1.05);
+      opacity: 0.85;
     }
 
 
-    /* DESKTOP NAV */
+    /* ==============================
+       NAVIGATION
+    ============================== */
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+
+      gap: 8px;
+    }
 
     .nav-links {
       display: flex;
       align-items: center;
 
-      gap: 5px;
+      gap: 3px;
 
       list-style: none;
     }
@@ -114,13 +148,13 @@
     .nav-links a {
       display: block;
 
-      padding: 10px 16px;
+      padding: 10px 14px;
 
       border-radius: 12px;
 
       color: #555;
 
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 500;
 
       transition: 0.25s;
@@ -132,7 +166,59 @@
     }
 
 
-    /* MOBILE MENU BUTTON */
+    /* ==============================
+       LANGUAGE SWITCHER
+    ============================== */
+
+    .language-switcher {
+      display: flex;
+      align-items: center;
+
+      padding: 4px;
+
+      margin-left: 8px;
+
+      border-radius: 12px;
+
+      background: #f1f1f5;
+    }
+
+    .language-switcher button {
+      border: none;
+
+      padding: 7px 10px;
+
+      border-radius: 9px;
+
+      background: transparent;
+
+      color: #777;
+
+      font-size: 12px;
+      font-weight: 600;
+
+      cursor: pointer;
+
+      transition: 0.25s;
+    }
+
+    .language-switcher button:hover {
+      color: #635bff;
+    }
+
+    .language-switcher button.active {
+      background: white;
+
+      color: #635bff;
+
+      box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+
+    /* ==============================
+       MOBILE BUTTON
+    ============================== */
 
     .menu-button {
       display: none;
@@ -148,6 +234,8 @@
       cursor: pointer;
 
       font-size: 22px;
+
+      color: #222;
     }
 
 
@@ -160,7 +248,7 @@
 
       position: fixed;
 
-      top: 72px;
+      top: 65px;
       left: 0;
 
       width: 100%;
@@ -170,6 +258,7 @@
       background: rgba(255, 255, 255, 0.97);
 
       backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
 
       border-bottom: 1px solid #eee;
 
@@ -183,7 +272,7 @@
     .mobile-menu a {
       display: block;
 
-      padding: 15px;
+      padding: 14px 15px;
 
       margin-bottom: 5px;
 
@@ -192,10 +281,57 @@
       color: #333;
 
       font-weight: 500;
+
+      transition: 0.2s;
     }
 
     .mobile-menu a:hover {
       background: #f1f0ff;
+      color: #635bff;
+    }
+
+
+    /* ==============================
+       MOBILE LANGUAGE
+    ============================== */
+
+    .mobile-language {
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      margin-top: 12px;
+
+      padding-top: 12px;
+
+      border-top: 1px solid #eee;
+    }
+
+    .mobile-language button {
+      flex: 1;
+
+      padding: 11px;
+
+      border: none;
+
+      border-radius: 10px;
+
+      background: #f3f3f6;
+
+      color: #777;
+
+      cursor: pointer;
+
+      font-weight: 600;
+
+      transition: 0.2s;
+    }
+
+    .mobile-language button.active {
+      background: #ebeaff;
+
       color: #635bff;
     }
 
@@ -243,7 +379,9 @@
     }
 
 
-    /* TAG */
+    /* ==============================
+       HERO TAG
+    ============================== */
 
     .hero-tag {
       display: inline-block;
@@ -259,11 +397,14 @@
       color: #635bff;
 
       font-size: 14px;
+
       font-weight: 600;
     }
 
 
-    /* HERO TITLE */
+    /* ==============================
+       HERO TITLE
+    ============================== */
 
     .hero h1 {
       font-size:
@@ -282,7 +423,9 @@
     }
 
 
-    /* HERO TEXT */
+    /* ==============================
+       HERO DESCRIPTION
+    ============================== */
 
     .hero p {
       width: 100%;
@@ -294,10 +437,14 @@
 
       font-size:
         clamp(16px, 2vw, 19px);
+
+      line-height: 1.7;
     }
 
 
-    /* BUTTON */
+    /* ==============================
+       PRIMARY BUTTON
+    ============================== */
 
     .primary-button {
       display: inline-flex;
@@ -316,6 +463,7 @@
       color: white;
 
       font-size: 15px;
+
       font-weight: 600;
 
       transition: 0.25s;
@@ -369,34 +517,40 @@
 
     .section-title p {
       color: #777;
+
+      line-height: 1.6;
     }
 
 
-    /* FEATURE GRID */
+    /* ==============================
+       FEATURE GRID
+    ============================== */
 
     .feature-grid {
       width: 100%;
-      max-width: 1250px;
+      max-width: 1300px;
 
       margin: auto;
 
       display: grid;
 
       grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+        repeat(5, minmax(0, 1fr));
 
-      gap: 20px;
+      gap: 18px;
     }
 
 
-    /* CARD */
+    /* ==============================
+       FEATURE CARD
+    ============================== */
 
     .feature-card {
       min-width: 0;
-
       min-height: 270px;
 
-      padding: clamp(22px, 3vw, 32px);
+      padding:
+        clamp(22px, 3vw, 32px);
 
       display: flex;
       flex-direction: column;
@@ -424,7 +578,9 @@
     }
 
 
-    /* ICON */
+    /* ==============================
+       FEATURE ICON
+    ============================== */
 
     .feature-icon {
       width: 55px;
@@ -461,11 +617,13 @@
 
     .card-link {
       margin-top: auto;
+
       padding-top: 20px;
 
       color: #635bff;
 
       font-size: 14px;
+
       font-weight: 600;
     }
 
@@ -498,7 +656,8 @@
         minmax(0, 1fr)
         minmax(0, 1fr);
 
-      gap: clamp(40px, 8vw, 100px);
+      gap:
+        clamp(40px, 8vw, 100px);
 
       align-items: center;
     }
@@ -525,8 +684,14 @@
       margin-bottom: 30px;
 
       color: #aaa;
+
+      line-height: 1.7;
     }
 
+
+    /* ==============================
+       DISCORD BUTTON
+    ============================== */
 
     .showcase-button {
       display: inline-flex;
@@ -545,6 +710,7 @@
       color: #111;
 
       font-size: 14px;
+
       font-weight: 600;
 
       transition: 0.25s;
@@ -552,14 +718,20 @@
 
     .showcase-button:hover {
       background: #8c85ff;
+
       color: white;
+
+      transform: translateY(-2px);
     }
 
 
-    /* VISUAL */
+    /* ==============================
+       VISUAL
+    ============================== */
 
     .visual {
       width: 100%;
+
       aspect-ratio: 1 / 0.85;
 
       border-radius: 30px;
@@ -593,13 +765,14 @@
       justify-content: center;
 
       background:
-        rgba(255,255,255,0.14);
+        rgba(255, 255, 255, 0.14);
 
       border:
         1px solid
-        rgba(255,255,255,0.3);
+        rgba(255, 255, 255, 0.3);
 
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
 
       font-size:
         clamp(45px, 7vw, 70px);
@@ -663,19 +836,49 @@
       font-size: 14px;
     }
 
-    .footer-logo {
-      color: #222;
 
-      font-weight: 800;
+    .footer-logo {
+      width: 50px;
+      height: 50px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
     }
 
 
     /* ==============================
        TABLET
-       <= 1000px
     ============================== */
 
+    @media (max-width: 1200px) {
+
+      .feature-grid {
+        grid-template-columns:
+          repeat(3, minmax(0, 1fr));
+      }
+
+    }
+
+
     @media (max-width: 1000px) {
+
+      .nav-links a {
+        padding: 9px 9px;
+
+        font-size: 13px;
+      }
+
+      .language-switcher {
+        margin-left: 4px;
+      }
 
       .feature-grid {
         grid-template-columns:
@@ -691,12 +894,9 @@
 
     /* ==============================
        MOBILE
-       <= 700px
     ============================== */
 
     @media (max-width: 700px) {
-
-      /* NAV */
 
       .navbar {
         height: 65px;
@@ -704,7 +904,12 @@
         padding: 0 18px;
       }
 
-      .nav-links {
+      .logo {
+        width: 50px;
+        height: 50px;
+      }
+
+      .nav-right {
         display: none;
       }
 
@@ -712,8 +917,6 @@
         display: block;
       }
 
-
-      /* HERO */
 
       .hero {
         min-height: 100svh;
@@ -736,8 +939,6 @@
       }
 
 
-      /* FEATURES */
-
       .features {
         padding-left: 20px;
         padding-right: 20px;
@@ -753,8 +954,6 @@
         min-height: 230px;
       }
 
-
-      /* SHOWCASE */
 
       .showcase {
         padding-left: 20px;
@@ -774,8 +973,6 @@
       }
 
 
-      /* FOOTER */
-
       footer {
         flex-direction: column;
 
@@ -789,7 +986,6 @@
 
     /* ==============================
        SMALL PHONE
-       <= 400px
     ============================== */
 
     @media (max-width: 400px) {
@@ -799,7 +995,8 @@
       }
 
       .logo {
-        font-size: 21px;
+        width: 46px;
+        height: 46px;
       }
 
       .feature-card {
@@ -809,66 +1006,124 @@
     }
 
   </style>
+
 </head>
 
 
 <body id="home">
 
 
-  <!-- =================================
+  <!-- ==============================
        NAVBAR
-  ================================== -->
+  ============================== -->
 
   <header class="navbar">
 
-    <!-- 点击 Logo 返回主页 -->
+
+    <!-- LOGO -->
+
     <a
-      href="#home"
+      href="index.html"
       class="logo"
+      aria-label="Home"
     >
-      LOGO
+
+      <img
+        src="STYX.png"
+        alt="STYX"
+      >
+
     </a>
 
 
-    <!-- Desktop Navigation -->
+    <!-- DESKTOP NAV -->
 
-    <nav>
-      <ul class="nav-links">
+    <div class="nav-right">
 
-        <li>
-          <a href="#people">
-            人员
-          </a>
-        </li>
+      <nav>
 
-        <li>
-          <a href="#exchange">
-            换汇
-          </a>
-        </li>
+        <ul class="nav-links">
 
-        <li>
-          <a href="#games">
-            游戏
-          </a>
-        </li>
+          <li>
+            <a
+              href="members.html"
+              data-i18n="people"
+            >
+              人员
+            </a>
+          </li>
 
-        <li>
-          <a href="#social">
-            社交软件
-          </a>
-        </li>
+          <li>
+            <a
+              href="#exchange"
+              data-i18n="exchange"
+            >
+              换汇
+            </a>
+          </li>
 
-      </ul>
-    </nav>
+          <li>
+            <a
+              href="#games"
+              data-i18n="games"
+            >
+              游戏
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#social"
+              data-i18n="social"
+            >
+              社交软件
+            </a>
+          </li>
+
+          <li>
+            <a
+              href="#other"
+              data-i18n="other"
+            >
+              其他
+            </a>
+          </li>
+
+        </ul>
+
+      </nav>
 
 
-    <!-- Mobile Menu Button -->
+      <!-- LANGUAGE -->
+
+      <div class="language-switcher">
+
+        <button
+          id="zhButton"
+          onclick="setLanguage('zh')"
+        >
+          中
+        </button>
+
+        <button
+          id="enButton"
+          onclick="setLanguage('en')"
+        >
+          EN
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <!-- MOBILE BUTTON -->
 
     <button
       class="menu-button"
       id="menuButton"
       aria-label="打开菜单"
+      aria-expanded="false"
     >
       ☰
     </button>
@@ -876,37 +1131,82 @@
   </header>
 
 
-  <!-- =================================
+  <!-- ==============================
        MOBILE MENU
-  ================================== -->
+  ============================== -->
 
   <div
     class="mobile-menu"
     id="mobileMenu"
   >
 
-    <a href="#people">
+
+    <a
+      href="members.html"
+      data-i18n="people"
+    >
       👤 人员
     </a>
 
-    <a href="#exchange">
+
+    <a
+      href="#exchange"
+      data-i18n="exchange"
+    >
       💱 换汇
     </a>
 
-    <a href="#games">
+
+    <a
+      href="#games"
+      data-i18n="games"
+    >
       🎮 游戏
     </a>
 
-    <a href="#social">
+
+    <a
+      href="#social"
+      data-i18n="social"
+    >
       💬 社交软件
     </a>
+
+
+    <a
+      href="#other"
+      data-i18n="other"
+    >
+      ✦ 其他
+    </a>
+
+
+    <!-- MOBILE LANGUAGE -->
+
+    <div class="mobile-language">
+
+      <button
+        id="mobileZhButton"
+        onclick="setLanguage('zh')"
+      >
+        中文
+      </button>
+
+      <button
+        id="mobileEnButton"
+        onclick="setLanguage('en')"
+      >
+        English
+      </button>
+
+    </div>
 
   </div>
 
 
-  <!-- =================================
+  <!-- ==============================
        MAIN
-  ================================== -->
+  ============================== -->
 
   <main>
 
@@ -917,24 +1217,36 @@
 
       <div class="hero-content">
 
-        <div class="hero-tag">
-          欢迎来到誓约业务平台
+
+        <div
+          class="hero-tag"
+          data-i18n="heroTag"
+        >
+          欢迎来到誓言业务平台
         </div>
 
-        <h1>
-          誓约业务，
+
+        <h1
+          data-i18n-html="heroTitle"
+        >
+          誓言业务，
           <br>
           <span>满足您的所有幻想。</span>
         </h1>
 
-        <p>
-          换汇、游戏与社交软件，
+
+        <p
+          data-i18n="heroDescription"
+        >
+          换汇、游戏、社交软件与其他，
           一个快速满足您所有要求的平台。
         </p>
+
 
         <a
           href="#features"
           class="primary-button"
+          data-i18n="start"
         >
           开始探索 →
         </a>
@@ -951,13 +1263,18 @@
       id="features"
     >
 
+
       <div class="section-title">
 
-        <h2>
+        <h2
+          data-i18n="businessTitle"
+        >
           业务介绍
         </h2>
 
-        <p>
+        <p
+          data-i18n="businessSubtitle"
+        >
           选择您想了解的业务
         </p>
 
@@ -970,24 +1287,26 @@
         <!-- PEOPLE -->
 
         <a
-          href="#people"
+          href="members.html"
           class="feature-card"
-          id="people"
         >
 
           <div class="feature-icon">
             👤
           </div>
 
-          <h3>
+          <h3 data-i18n="people">
             人员
           </h3>
 
-          <p>
-            查看誓约业务平台工作人员与负责范围。
+          <p data-i18n="peopleDescription">
+            查看誓言业务平台工作人员与负责范围。
           </p>
 
-          <span class="card-link">
+          <span
+            class="card-link"
+            data-i18n="viewPeople"
+          >
             查看人员 →
           </span>
 
@@ -1006,16 +1325,19 @@
             💱
           </div>
 
-          <h3>
+          <h3 data-i18n="exchange">
             换汇
           </h3>
 
-          <p>
+          <p data-i18n="exchangeDescription">
             查看不同货币之间的汇率，
             方便进行货币转换。
           </p>
 
-          <span class="card-link">
+          <span
+            class="card-link"
+            data-i18n="viewExchange"
+          >
             查看换汇 →
           </span>
 
@@ -1034,15 +1356,19 @@
             🎮
           </div>
 
-          <h3>
+          <h3 data-i18n="games">
             游戏
           </h3>
 
-          <p>
-            查看第五人格代充，代送，账号估价，洗号，代挂，代蹲等业务。
+          <p data-i18n="gamesDescription">
+            查看第五人格代充，代送，账号估价，
+            洗号，代挂，代蹲，陪玩，代打等业务。
           </p>
 
-          <span class="card-link">
+          <span
+            class="card-link"
+            data-i18n="viewGames"
+          >
             查看业务 →
           </span>
 
@@ -1061,16 +1387,50 @@
             💬
           </div>
 
-          <h3>
+          <h3 data-i18n="social">
             社交软件
           </h3>
 
-          <p>
-            查看Discord与QQ的装扮与助力。
+          <p data-i18n="socialDescription">
+            查看 Discord，QQ，微博，
+            爱奇艺等代送业务。
           </p>
 
-          <span class="card-link">
+          <span
+            class="card-link"
+            data-i18n="viewSocial"
+          >
             查看业务 →
+          </span>
+
+        </a>
+
+
+        <!-- OTHER -->
+
+        <a
+          href="#other"
+          class="feature-card"
+          id="other"
+        >
+
+          <div class="feature-icon">
+            ✦
+          </div>
+
+          <h3 data-i18n="other">
+            其他
+          </h3>
+
+          <p data-i18n="otherDescription">
+            六爻，美化，同人文定制，板写，产孝女，三恋，语C。
+          </p>
+
+          <span
+            class="card-link"
+            data-i18n="viewOther"
+          >
+            查看其他 →
           </span>
 
         </a>
@@ -1081,9 +1441,9 @@
     </section>
 
 
-    <!-- =================================
-         SHOWCASE
-    ================================== -->
+    <!-- ==============================
+         DISCORD SHOWCASE
+    ============================== -->
 
     <section class="showcase">
 
@@ -1092,19 +1452,29 @@
 
         <div>
 
-          <h2>
+          <h2
+            data-i18n-html="discordTitle"
+          >
             Discord
             <br>
             <span>服务器.</span>
           </h2>
 
-          <p>
-            我们主要在Discord里发展，欢迎加入我们的服务器。
+
+          <p
+            data-i18n="discordDescription"
+          >
+            我们主要在 Discord 里发展，
+            欢迎加入我们的服务器。
           </p>
 
+
           <a
-            href="#features"
+            href="https://discord.gg/FDsSujZq2T"
             class="showcase-button"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-i18n="join"
           >
             加入
           </a>
@@ -1120,29 +1490,32 @@
 
         </div>
 
-
       </div>
 
     </section>
 
 
-    <!-- =================================
+    <!-- ==============================
          CTA
-    ================================== -->
+    ============================== -->
 
     <section class="cta">
 
-      <h2>
-        誓约业务平台
+
+      <h2 data-i18n="ctaTitle">
+        誓言业务平台
       </h2>
 
-      <p>
+
+      <p data-i18n="ctaDescription">
         简单介绍
       </p>
+
 
       <a
         href="#home"
         class="primary-button"
+        data-i18n="backHome"
       >
         回到主页 ↑
       </a>
@@ -1153,67 +1526,486 @@
   </main>
 
 
-  <!-- =================================
+  <!-- ==============================
        FOOTER
-  ================================== -->
+  ============================== -->
 
   <footer>
 
+
     <div class="footer-logo">
-      LOGO
+
+      <img
+        src="STYX.png"
+        alt="STYX"
+      >
+
     </div>
 
-    <div>
-      © 2026 誓约业务平台
+
+    <div data-i18n="copyright">
+      © 2026 誓言业务平台
     </div>
+
 
   </footer>
 
 
-  <!-- =================================
+  <!-- ==============================
        JAVASCRIPT
-       Mobile Menu
-  ================================== -->
+  ============================== -->
 
   <script>
 
+    /* =================================
+       LANGUAGE DATA
+    ================================= */
+
+    const translations = {
+
+      /* ===============================
+         CHINESE
+      =============================== */
+
+      zh: {
+
+        pageTitle:
+          "誓言业务区",
+
+        people:
+          "人员",
+
+        exchange:
+          "换汇",
+
+        games:
+          "游戏",
+
+        social:
+          "社交软件",
+
+        other:
+          "其他",
+
+        heroTag:
+          "欢迎来到誓言业务平台",
+
+        heroTitle:
+          '誓言业务，<br><span>满足您的所有幻想。</span>',
+
+        heroDescription:
+          "换汇、游戏、社交软件与其他，一个快速满足您所有要求的平台。",
+
+        start:
+          "开始探索 →",
+
+        businessTitle:
+          "业务介绍",
+
+        businessSubtitle:
+          "选择您想了解的业务",
+
+        peopleDescription:
+          "查看誓言业务平台工作人员与负责范围。",
+
+        exchangeDescription:
+          "查看不同货币之间的汇率，方便进行货币转换。",
+
+        gamesDescription:
+          "查看第五人格代充，代送，账号估价，洗号，代挂，代蹲，陪玩，代打等业务。",
+
+        socialDescription:
+          "查看 Discord，QQ，微博，爱奇艺等代送业务。",
+
+        otherDescription:
+          "六爻，同人文定制，板写，产孝女，三恋，语C。",
+
+        viewPeople:
+          "查看人员 →",
+
+        viewExchange:
+          "查看换汇 →",
+
+        viewGames:
+          "查看业务 →",
+
+        viewSocial:
+          "查看业务 →",
+
+        viewOther:
+          "查看其他 →",
+
+        discordTitle:
+          'Discord<br><span>服务器.</span>',
+
+        discordDescription:
+          "我们主要在 Discord 里发展，欢迎加入我们的服务器。",
+
+        join:
+          "加入",
+
+        ctaTitle:
+          "誓言业务平台",
+
+        ctaDescription:
+          "简单介绍",
+
+        backHome:
+          "回到主页 ↑",
+
+        copyright:
+          "© 2026 誓言业务平台"
+
+      },
+
+
+      /* ===============================
+         ENGLISH
+      =============================== */
+
+      en: {
+
+        pageTitle:
+          "STYX Trading Center",
+
+        people:
+          "People",
+
+        exchange:
+          "Exchange",
+
+        games:
+          "Games",
+
+        social:
+          "Social",
+
+        other:
+          "Other",
+
+        heroTag:
+          "Welcome to STYX Trading Center",
+
+        heroTitle:
+          'STYX TC,<br><span>Everything You Need.</span>',
+
+        heroDescription:
+          "Exchange, gaming, social media services, and other services, all in one convenient platform.",
+
+        start:
+          "Explore Now →",
+
+        businessTitle:
+          "Our Services",
+
+        businessSubtitle:
+          "Choose a service you want to explore",
+
+        peopleDescription:
+          "View our team members and their areas of responsibility.",
+
+        exchangeDescription:
+          "Check exchange rates and easily convert between different currencies.",
+
+        gamesDescription:
+          "Identity V top-up, gifting, account evaluation, account clearing, account boosting, account sitting, game companion, and game boosting services.",
+
+        socialDescription:
+          "VIP gifting services for Discord, QQ, Weibo, iQIYI, and other social platforms.",
+
+        otherDescription:
+          "Ching divination, image creation，custom fanfiction, board writing (Chinese only),  custom creator services (Chinese only), Virtual/Toxic/Tragic Romance (Chinese only), Text Based Roleplay (Chinese only).",
+
+        viewPeople:
+          "View People →",
+
+        viewExchange:
+          "View Exchange →",
+
+        viewGames:
+          "View Services →",
+
+        viewSocial:
+          "View Services →",
+
+        viewOther:
+          "View Other →",
+
+        discordTitle:
+          'Discord<br><span>Server.</span>',
+
+        discordDescription:
+          "We mainly operate through Discord. Welcome to join our server.",
+
+        join:
+          "Join",
+
+        ctaTitle:
+          "STYX Trading Center",
+
+        ctaDescription:
+          "Simple introduction",
+
+        backHome:
+          "Back Home ↑",
+
+        copyright:
+          "© 2026 STYX Trading Center"
+
+      }
+
+    };
+
+
+    /* =================================
+       SET LANGUAGE
+    ================================= */
+
+    function setLanguage(language) {
+
+      if (!translations[language]) {
+        language = "zh";
+      }
+
+
+      /* ===============================
+         保存语言
+         其他页面也使用这个值
+      =============================== */
+
+      localStorage.setItem(
+        "shiyue-language",
+        language
+      );
+
+
+      /* ===============================
+         HTML LANG
+      =============================== */
+
+      document.documentElement.lang =
+        language === "zh"
+          ? "zh-CN"
+          : "en";
+
+
+      /* ===============================
+         PAGE TITLE
+      =============================== */
+
+      document.title =
+        translations[language].pageTitle;
+
+
+      /* ===============================
+         普通文字
+      =============================== */
+
+      document
+        .querySelectorAll("[data-i18n]")
+        .forEach(function(element) {
+
+          const key =
+            element.getAttribute(
+              "data-i18n"
+            );
+
+          if (
+            translations[language][key]
+          ) {
+
+            element.textContent =
+              translations[language][key];
+
+          }
+
+        });
+
+
+      /* ===============================
+         HTML 文字
+      =============================== */
+
+      document
+        .querySelectorAll("[data-i18n-html]")
+        .forEach(function(element) {
+
+          const key =
+            element.getAttribute(
+              "data-i18n-html"
+            );
+
+          if (
+            translations[language][key]
+          ) {
+
+            element.innerHTML =
+              translations[language][key];
+
+          }
+
+        });
+
+
+      /* ===============================
+         DESKTOP BUTTON
+      =============================== */
+
+      document
+        .getElementById("zhButton")
+        .classList.toggle(
+          "active",
+          language === "zh"
+        );
+
+      document
+        .getElementById("enButton")
+        .classList.toggle(
+          "active",
+          language === "en"
+        );
+
+
+      /* ===============================
+         MOBILE BUTTON
+      =============================== */
+
+      document
+        .getElementById("mobileZhButton")
+        .classList.toggle(
+          "active",
+          language === "zh"
+        );
+
+      document
+        .getElementById("mobileEnButton")
+        .classList.toggle(
+          "active",
+          language === "en"
+        );
+
+    }
+
+
+    /* =================================
+       LOAD SAVED LANGUAGE
+    ================================= */
+
+    const savedLanguage =
+      localStorage.getItem(
+        "shiyue-language"
+      );
+
+
+    setLanguage(
+      savedLanguage || "zh"
+    );
+
+
+    /* =================================
+       MOBILE MENU
+    ================================= */
+
     const menuButton =
-      document.getElementById("menuButton");
+      document.getElementById(
+        "menuButton"
+      );
 
     const mobileMenu =
-      document.getElementById("mobileMenu");
+      document.getElementById(
+        "mobileMenu"
+      );
 
+
+    /* ===============================
+       OPEN / CLOSE
+    =============================== */
 
     menuButton.addEventListener(
       "click",
-      function () {
+      function() {
 
-        mobileMenu.classList.toggle("active");
+        const active =
+          mobileMenu.classList.toggle(
+            "active"
+          );
+
+        menuButton.setAttribute(
+          "aria-expanded",
+          active
+        );
 
       }
     );
 
 
-    /* 点击菜单项目后自动关闭 */
+    /* ===============================
+       CLICK MENU LINK
+    =============================== */
 
-    const mobileLinks =
-      mobileMenu.querySelectorAll("a");
+    mobileMenu
+      .querySelectorAll("a")
+      .forEach(function(link) {
 
-    mobileLinks.forEach(function(link) {
+        link.addEventListener(
+          "click",
+          function() {
 
-      link.addEventListener(
-        "click",
-        function() {
+            mobileMenu.classList.remove(
+              "active"
+            );
 
-          mobileMenu.classList.remove("active");
+            menuButton.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* ===============================
+       CLICK OUTSIDE
+    =============================== */
+
+    document.addEventListener(
+      "click",
+      function(event) {
+
+        const insideMenu =
+          mobileMenu.contains(
+            event.target
+          );
+
+        const insideButton =
+          menuButton.contains(
+            event.target
+          );
+
+        if (
+          !insideMenu &&
+          !insideButton
+        ) {
+
+          mobileMenu.classList.remove(
+            "active"
+          );
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
         }
-      );
 
-    });
+      }
+    );
 
   </script>
 
 
 </body>
+
 </html>
